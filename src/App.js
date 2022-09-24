@@ -1,6 +1,6 @@
 import React from "react"
 import Navbar from "./components/Navbar"
-import Card from "./components/Card"
+import Card, {CardStyled} from "./components/Card"
 import data from "./data"
 import styled from "styled-components"
 
@@ -18,21 +18,19 @@ const Line = styled.hr`
     
 `
 
+const CardContainer = styled.div`
+    ${CardStyled}:after {
+        content: " 🦄";
+    }
+`
+
 export default function App(){
-    const cards = data.map((item) => {
-        return (
-             <React.Fragment key={item.id}>
-               <Card item={item}/>
-               <Line />
-             </React.Fragment>
-             
-        )
-    })
-    
     return(
         <div>
             <Navbar />
-            {cards}
+            <CardContainer>{data.map((item) => 
+                <Card item={item} key={item.id} />
+            )}</CardContainer>
         </div>
     )
 }
