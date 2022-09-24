@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components"
 
-const CardStyled = styled.div`
+export const CardStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center
