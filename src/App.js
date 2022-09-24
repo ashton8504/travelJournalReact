@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import Navbar from "./components/Navbar"
+import Card from "./components/Card"
+import data from "./data"
+import styled from "styled-components"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const Line = styled.hr`
+    width: 35%;
+    padding-right: 200px;
+    margin:0 auto;
+    text-align:center;
+    height: 2px;
+    background-color: #F5F5F5;
+    border: none;
+    &:border: {
+        display: none;
+    }
+    
+`
+
+export default function App(){
+    const cards = data.map((item) => {
+        return (
+             <React.Fragment key={item.id}>
+               <Card item={item}/>
+               <Line />
+             </React.Fragment>
+             
+        )
+    })
+    
+    return(
+        <div>
+            <Navbar />
+            {cards}
+        </div>
+    )
 }
-
-export default App;
